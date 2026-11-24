@@ -88,13 +88,6 @@ Sin Docker también funciona: `pnpm install && pnpm dev`.
 
 `NEXT_PUBLIC_SITE_URL` es opcional: por defecto `https://portafolio.buildrion.com`.
 
-## Despliegue en portafolio.buildrion.com
-
-**Servidor propio (Docker):** `docker compose up -d --build` en el servidor y un proxy inverso
-(Nginx/Caddy/Cloudflare Tunnel) de `portafolio.buildrion.com` al puerto 5901, con SSL (Certbot o
-Cloudflare).
-
-**Vercel:** importar el repositorio, agregar el dominio en *Settings → Domains* y en el DNS de
-`buildrion.com` crear `CNAME portafolio → cname.vercel-dns.com` (en Cloudflare, modo **DNS only**).
+## Rutas
 
 `/` redirige a `/es`; `/en` es la versión en inglés; `/es/cv` y `/en/cv` la hoja de vida.
