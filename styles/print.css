@@ -1,0 +1,9 @@
+/* ---------- print (résumé) ---------- */
+@media print {
+  @page { size: A4; margin: 14mm 14mm 12mm; }
+  html, body { background: #fff !important; }
+  .grain::after { display: none; }
+  .no-print { display: none !important; }
+  .print-avoid { break-inside: avoid; }
+  a { text-decoration: none; }
+}

@@ -1,0 +1,77 @@
+/* ------------------------------------------------------------------
+   Identity: a control room at night (dark) or paper (light).
+   Near-black or warm paper, bone/ink type, one vermilion signal.
+------------------------------------------------------------------- */
+:root {
+  --paper: #0a0a0b;
+  --paper-2: #121214;
+  --paper-3: #1a1a1d;
+  --ink: #edeae3;
+  --ink-2: #b4b0a7;
+  --ink-3: #7d7a73;
+  --line: #26262a;
+  --signal: #ff5a1f;
+  --signal-ink: #ff7a47;
+  --on-signal: #0a0a0b;
+  --invert-bg: #edeae3;
+  --invert-fg: #0a0a0b;
+  --invert-muted: #55524c;
+  --invert-line: #cfcbc1;
+  color-scheme: dark;
+  --font-body: var(--font-display);
+}
+
+
+/* Light theme: warm paper, same signal. Chosen via the toggle or the OS. */
+:root[data-theme="light"] {
+  --paper: #f2efe8;
+  --paper-2: #e9e5db;
+  --paper-3: #ddd8cc;
+  --ink: #0e0e0f;
+  --ink-2: #45433e;
+  --ink-3: #6b6861;
+  --line: #d2cdc1;
+  --signal: #e8461a;
+  --signal-ink: #b5340c;
+  --on-signal: #0a0a0b;
+  --invert-bg: #0e0e0f;
+  --invert-fg: #f2efe8;
+  --invert-muted: #a19d93;
+  --invert-line: #2a2a2d;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-on-signal: var(--on-signal);
+  --color-invert-bg: var(--invert-bg);
+  --color-invert-fg: var(--invert-fg);
+  --color-invert-muted: var(--invert-muted);
+  --color-invert-line: var(--invert-line);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+/* Light "paper sheet" scope for the printable résumé. */
+.sheet {
+  --paper: #ffffff;
+  --paper-2: #f4f2ec;
+  --ink: #111111;
+  --ink-2: #333333;
+  --ink-3: #5c5c5c;
+  --line: #d4d0c6;
+  --signal: #d1400f;
+  --signal-ink: #c2360f;
+  color-scheme: light;
+  color: var(--ink);
+}
+
