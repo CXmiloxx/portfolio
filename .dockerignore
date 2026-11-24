@@ -1,0 +1,14 @@
+.git
+.next
+node_modules
+npm-debug.log*
+.env*
+!.env.example
+Dockerfile*
+docker-compose*.yml
+dev.sh
+*.md
+!README.md
+brand
+.claude
+.pnpm-store

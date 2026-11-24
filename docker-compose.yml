@@ -1,0 +1,20 @@
+# Portafolio — producción (la misma imagen que se despliega).
+#   ./dev.sh prod   → http://localhost:5901
+name: portafolio
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: "${NEXT_PUBLIC_SITE_URL:-https://portafolio.buildrion.com}"
+    image: portafolio:latest
+    ports:
+      - "5901:3000"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/.next/cache
+    security_opt:
+      - no-new-privileges:true
