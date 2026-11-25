@@ -17,7 +17,7 @@ igual que los sistemas que entrego.
 
 Geometría (lienzo 130×56, trazo 6, extremos redondeados): `<`, `/` y `>` en color señal; `c` y `g`
 en el color del texto. En código: `components/ui/logo.tsx`; con `mono` todo va en un solo color
-(cabecera con `mix-blend-difference`).
+(por ejemplo, sobre la banda señal).
 
 Reglas: no separar las letras de los signos, no cambiar los colores de lugar, no rotar. Ancho
 mínimo 48 px para el símbolo completo; por debajo, usar el favicon.

@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { HeaderShell } from "@/components/interactive/header-shell"
 import { MobileMenu } from "@/components/interactive/mobile-menu"
 import { ThemeToggle } from "@/components/interactive/theme-toggle"
 import { ArrowUpRight } from "@/components/ui/icons"
@@ -10,16 +11,16 @@ import { pad2 } from "@/lib/format"
 import { NAV_ORDER, SECTION } from "@/lib/sections"
 import type { Dictionary } from "@/types/dictionary"
 
-/** Fixed header. mix-blend-difference keeps it legible over dark and light sections. */
+/** Fixed header; HeaderShell gives it a solid background once the page scrolls. */
 export function SiteHeader({ d }: { d: Dictionary }) {
   const other = otherLocale(d.locale)
   const { nav } = d.site
   return (
-    <header className="no-print fixed inset-x-0 top-0 z-50 text-[#f2efe8] mix-blend-difference">
+    <HeaderShell>
       <div className="wrap flex h-16 items-center justify-between gap-6 md:h-20">
         <Link href={`/${d.locale}`} className="flex items-center gap-3" aria-label={profile.name}>
-          <LogoMark mono className="h-6 w-auto" />
-          <span className="hidden eyebrow sm:inline">{profile.name}</span>
+          <LogoMark className="h-6 w-auto" />
+          <span className="hidden eyebrow text-ink-2 sm:inline">{profile.name}</span>
         </Link>
 
         <nav aria-label={nav.main} className="hidden lg:block">
@@ -60,6 +61,6 @@ export function SiteHeader({ d }: { d: Dictionary }) {
           />
         </div>
       </div>
-    </header>
+    </HeaderShell>
   )
 }

@@ -10,7 +10,7 @@ interface Item {
 
 /**
  * Full-screen navigation for small screens. The panel is portalled to <body> so
- * the header's mix-blend-difference does not affect it.
+ * it covers the whole page, header included.
  */
 export function MobileMenu({ items, openLabel, closeLabel }: { items: Item[]; openLabel: string; closeLabel: string }) {
   const [open, setOpen] = useState(false)
