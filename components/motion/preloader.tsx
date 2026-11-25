@@ -2,6 +2,8 @@
 
 import { useRef, useState } from "react"
 
+import { INTRO_SEEN_KEY } from "@/lib/locale-switch"
+
 import { gsap, prefersReducedMotion, useGSAP } from "./gsap"
 import { finishIntro } from "./intro"
 
@@ -12,10 +14,11 @@ export function Preloader({ lines, ready, skip, name }: { lines: string[]; ready
 
   useGSAP(
     () => {
-      const seen = sessionStorage.getItem("intro-seen") === "1"
+      const seen = sessionStorage.getItem(INTRO_SEEN_KEY) === "1"
       if (seen || prefersReducedMotion()) {
         setGone(true)
-        finishIntro()
+        // Arriving from a language switch: the curtain ends the intro when it lifts.
+        if (!("localeSwitch" in document.documentElement.dataset)) finishIntro()
         return
       }
       document.documentElement.style.overflow = "hidden"
@@ -26,7 +29,7 @@ export function Preloader({ lines, ready, skip, name }: { lines: string[]; ready
       const bar = root.current!.querySelector<HTMLElement>("[data-bar]")!
 
       const done = () => {
-        sessionStorage.setItem("intro-seen", "1")
+        sessionStorage.setItem(INTRO_SEEN_KEY, "1")
         document.documentElement.style.overflow = ""
         window.__lenis?.start()
         setGone(true)
@@ -55,7 +58,7 @@ export function Preloader({ lines, ready, skip, name }: { lines: string[]; ready
   return (
     <div
       ref={root}
-      className="fixed inset-0 z-[100] flex flex-col justify-between bg-paper p-5 md:p-10"
+      className="preloader fixed inset-0 z-[100] flex flex-col justify-between bg-paper p-5 md:p-10"
       role="status"
       aria-label={name}
     >

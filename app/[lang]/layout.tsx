@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next"
 
 import { archivo, jetbrainsMono } from "@/lib/fonts"
+import { LocaleCurtain } from "@/components/motion/locale-curtain"
 import { currentDictionary } from "@/lib/locale"
+import { localeSwitchBootScript } from "@/lib/locale-switch"
 import { pageMetadata, personJsonLd } from "@/lib/seo"
 import { themeBootScript } from "@/lib/theme"
 import { locales } from "@/types/i18n"
@@ -23,7 +25,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
   return (
     <html lang={d.locale} className={`${archivo.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript + localeSwitchBootScript }} />
       </head>
       <body className="grain min-h-dvh antialiased">
         <script
@@ -31,6 +33,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(d)).replace(/</g, "\\u003c") }}
         />
         {children}
+        <LocaleCurtain />
       </body>
     </html>
   )

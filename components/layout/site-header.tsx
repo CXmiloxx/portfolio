@@ -1,19 +1,19 @@
 import Link from "next/link"
 
 import { HeaderShell } from "@/components/interactive/header-shell"
+import { LanguageSwitch } from "@/components/interactive/language-switch"
 import { MobileMenu } from "@/components/interactive/mobile-menu"
 import { ThemeToggle } from "@/components/interactive/theme-toggle"
 import { ArrowUpRight } from "@/components/ui/icons"
 import { LogoMark } from "@/components/ui/logo"
 import { profile } from "@/data/profile"
-import { otherLocale } from "@/i18n/config"
+import { localeHrefs } from "@/i18n/config"
 import { pad2 } from "@/lib/format"
 import { NAV_ORDER, SECTION } from "@/lib/sections"
 import type { Dictionary } from "@/types/dictionary"
 
 /** Fixed header; HeaderShell gives it a solid background once the page scrolls. */
 export function SiteHeader({ d }: { d: Dictionary }) {
-  const other = otherLocale(d.locale)
   const { nav } = d.site
   return (
     <HeaderShell>
@@ -42,9 +42,12 @@ export function SiteHeader({ d }: { d: Dictionary }) {
             dark={d.site.theme.dark}
             className="grid size-9 place-items-center rounded-full border border-current transition-transform duration-500 hover:rotate-45"
           />
-          <Link href={`/${other}`} hrefLang={other} className="eyebrow" aria-label={nav.switchTo} title={nav.switchTo}>
-            {d.locale.toUpperCase()} <span className="opacity-40">/ {other.toUpperCase()}</span>
-          </Link>
+          <LanguageSwitch
+            current={d.locale}
+            hrefs={localeHrefs()}
+            label={d.site.language.label}
+            switchTo={nav.switchTo}
+          />
           <Link
             href={`/${d.locale}/cv`}
             className="hidden eyebrow h-9 items-center gap-2 rounded-full border border-current px-4 sm:inline-flex"

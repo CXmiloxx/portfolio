@@ -21,6 +21,7 @@ export const site: SiteCopy = {
   },
   skipToContent: "Saltar al contenido",
   theme: { light: "Cambiar a tema claro", dark: "Cambiar a tema oscuro" },
+  language: { label: "Idioma" },
   social: { label: "Redes y contacto" },
   boot: {
     lines: ["montando /interfaz", "levantando api :443", "migrando base de datos", "emitiendo certificado ssl", "desplegando en producción"],

@@ -21,6 +21,8 @@ export interface SiteCopy {
   }
   skipToContent: string
   theme: { light: string; dark: string }
+  /** Accessible name of the language switch group. */
+  language: { label: string }
   social: { label: string }
   boot: { lines: string[]; ready: string; skip: string }
   footer: { built: string; source: string }

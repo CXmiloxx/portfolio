@@ -20,3 +20,8 @@ export function localize(text: Text | undefined, locale: Locale): string {
 export function intlLocale(locale: Locale): string {
   return locale === "es" ? "es-CO" : "en-US"
 }
+
+/** The same page in every language, e.g. localeHrefs("/cv") → { es: "/es/cv", en: "/en/cv" }. */
+export function localeHrefs(path = ""): Record<Locale, string> {
+  return Object.fromEntries(locales.map((l) => [l, `/${l}${path}`])) as Record<Locale, string>
+}

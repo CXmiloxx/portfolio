@@ -25,6 +25,7 @@ export function onIntroDone(cb: () => void): () => void {
 }
 
 export function finishIntro() {
+  if (window.__introDone) return
   window.__introDone = true
   window.dispatchEvent(new Event(INTRO_EVENT))
 }

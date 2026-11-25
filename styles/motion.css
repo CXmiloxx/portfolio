@@ -64,3 +64,10 @@ html.theme-swap, html.theme-swap * {
   transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease !important;
 }
 
+
+/* Language curtain: hidden unless a switch is leaving (GSAP) or arriving (boot script). */
+.locale-curtain { visibility: hidden; }
+html[data-locale-switch] .locale-curtain { visibility: visible; }
+/* Preloader is server-rendered; skip its first paint when it will not play. */
+html[data-intro-seen] .preloader,
+html[data-locale-switch] .preloader { display: none; }
